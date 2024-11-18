@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            background-color: #fff; /* Cor de fundo do site */
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333; /* Cor de fundo do cabeçalho */
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            text-align: center;
+            color: #0cbcc4;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .content .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+            border-color: #0cbcc4;
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: #0cbcc4;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #009e96;
+        }
+
+        .alert {
+            background-color: #f39c12;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.svg" alt="Logo">
+</header>
+
+<div class="content">
+    <div class="alert">
+        Parabéns! Você ganhou o número premiado: <span class="highlight">????</span>
+    </div>
+
+    <h2>números serão enviados no e-mail</h2>
+    
+    <p><strong>Quantidade:</strong> <span id="quantity"></span></p>
+    <p><strong>Total:</strong> R$ <span id="total"></span></p>
+
+    <div class="form-group">
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" placeholder="Digite seu nome completo">
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Número de Telefone:</label>
+        <input type="tel" id="phone" placeholder="Digite seu número de telefone">
+    </div>
+
+    <button class="submit-button" id="submit-button">Finalizar Compra</button>
+</div>
+
+<script>
+    // Função para obter parâmetros da URL
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Preencher quantidade e total com os parâmetros da URL
+    document.getElementById('quantity').textContent = getQueryParam('quantity') || 'Não disponível';
+    document.getElementById('total').textContent = getQueryParam('total') || 'Não disponível';
+
+    // Função para validar o preenchimento dos campos
+    function isFormValid() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        return name && email && phone;
+    }
+
+    // Redirecionar para o arquivo de transação via URL com o valor
+    document.getElementById('submit-button').addEventListener('click', function() {
+        if (isFormValid()) {
+            const totalValue = getQueryParam('total');
+            window.location.href = `transaction_pix.html?value=${totalValue}`;
+        } else {
+            alert('Por favor, preencha todos os campos!');
+        }
+    });
+</script>
+
+</body>
+</html>

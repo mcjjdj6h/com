@@ -1,0 +1,85 @@
+<html lang="pt-br">
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>SAV AWARDS | Pix</title> 
+    <link rel="stylesheet" href="./transaction_pix.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"> 
+  </head> 
+  <body> 
+    <!-- Header --> 
+    <header> 
+      <div class="logo"> 
+        <a href="#"> <img src="./logo.svg" alt="Logo" draggable="false"> </a> 
+      </div> 
+    </header> 
+    <!-- Header --> 
+    <main> 
+      <div class="pix-container"> 
+        <div class="payment"> 
+          <p>Abra seu aplicativo de pagamento onde você utiliza o Pix e escolha a opção <b>Ler QR Code</b></p> 
+          <div class="qrcode-info"> 
+            <img src="./images/icons/cellphone-icon.svg" draggable="false"> 
+            <span>Aponte a câmera do seu celular</span> 
+          </div> 
+          <div class="qrcode">
+            
+
+caso a função do QR code não seja exibida abaixo tem a chave pix e meio com um número gerado do seu pedido copie clicando no e-mail abaixo entre no seu banco e efetue o pagamento do valor os números chegaram no seu e-mail após a comprovação do pagamento imediatamente
+
+
+          </div> 
+          <div class="pix-value"> 
+            <span>Valor do Pix:</span> 
+            <strong id="pixValue">R$ 000,00</strong> 
+          </div> 
+          <div class="pix-copy-and-past"> 
+            <span>Você também pode pagar escolhendo a opção <b>Pix e-mail</b> no seu aplicativo de pagamento ou Internet Banking (banco online). Neste caso, copie o e-mail abaixo:</span> 
+            <div class="qrcode-text"> 
+              <img id="copy" src="./copy-icon.svg" alt="Copiar" draggable="false"> 
+              <div id="copied-code">
+                Código copiado.
+              </div> 
+              <p id="qrcode-text">5207031@vakinha.com.br</p> 
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+    </main> 
+    <script>
+      // Função para obter o parâmetro da URL
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Exibir o valor do Pix da URL
+      const value = getQueryParam('value');
+      if (value) {
+        document.getElementById('pixValue').textContent = `R$ ${parseFloat(value).toFixed(2)}`;
+      }
+
+      // Função de copiar o código do Pix
+      document.getElementById('copy').addEventListener('click', function() {
+        var qrcodeText = document.getElementById('qrcode-text');
+        var copiedCodeBox = document.getElementById('copied-code');
+        navigator.clipboard.writeText(qrcodeText.textContent).then(function() {
+          qrcodeText.style.filter = 'blur(1px)';
+          copiedCodeBox.style.visibility = 'visible';
+          copiedCodeBox.style.opacity = '0.9';
+          copiedCodeBox.style.transition = 'all 0.3s';
+
+          // Remover o estilo após 2 segundos
+          setTimeout(function() {
+            qrcodeText.style.filter = '';
+            copiedCodeBox.style.visibility = '';
+            copiedCodeBox.style.opacity = '';
+          }, 1000);
+        });
+      });
+    </script> 
+  </body>
+</html>

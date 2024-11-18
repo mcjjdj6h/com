@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteios Vaquinha</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            background-color: #2F4F4F;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 30px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .floating-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: #000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            z-index: 1000;
+            color: #fff;
+        }
+
+        .floating-menu img {
+            max-height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%;
+            background-color: #000;
+            padding: 10px;
+            border-radius: 80px;
+        }
+
+        .contact img {
+            max-height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .contact a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            color: #FFD700;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5 px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            background-color: #e60000;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .image-container {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #000;
+            max-width: 90%;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #000;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid #000;
+        }
+
+        .notification {
+            color: white;
+            font-size: 15px;
+            text-align: left;
+            padding: 19px;
+            margin-top: -10px;
+            margin-left: -0px;
+        }
+
+        .green {
+            color: #00FF00;
+        }
+
+        .red {
+            color: #FF0000;
+        }
+
+        .blue {
+            color: #0000FF;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <img src="1.png" alt="Logo" id="menuToggle">
+        <h1>Sorteios Vaquinha</h1>
+    </header>
+
+    <div class="image-container">
+        <a href="Be8egw29h23h38svsbss37373ge73.html">
+
+
+            <img src="2.jpg" alt="Dinheiro">
+
+        </a>
+<div class="notification" id="notification">
+   
+ </div>
+
+    <div class="sorteios-container">
+    <!-- Sorteio em andamento -->
+    <div class="sorteios-box">
+        <img src="money.jpg" alt="Imagem Sorteio">
+        <div class="sorteios-info">
+            <h2>2K NO PIX SORTEIO ATIVO</h2>
+            <p><strong>Valor do Sorteio:</strong> <span class="valor">R$ 2.000,00</span></p>
+            <p><strong>Sorteio termina em:</strong> 7 dias</p>
+            <p class="status status-aberto">Sorteio em andamento - <strong>Aberto</strong></p>
+            <p class="resultado">Clique aqui para participar!</p>
+            <a href="Be8egw29h23h38svsbss37373ge73.html" class="acessar-sorteio">Acessar Sorteio</a> <!-- Botão abaixo do texto -->
+        </div>
+    </div>
+
+
+
+
+
+
+    
+
+
+
+    <!-- Sorteio encerrado -->
+    <div class="sorteios-box" onclick="showFloatingInfo()">
+        <img src="money.jpg" alt="Imagem Sorteio">
+        <div class="sorteios-info">
+            <h2>SORTEIO ENCERRADO</h2>
+            <p><strong>Valor do Sorteio:</strong> <span class="valor">R$ 300,00</span></p>
+            <p><strong>Sorteio terminou há:</strong> 12 dias</p>
+            <p class="status status-encerrado">Sorteio encerrado</p>
+            <p class="resultado">Este sorteio está encerrado. Clique para mais informações.</p>
+        </div>
+    </div>
+
+    <!-- Sorteio encerrado -->
+    <div class="sorteios-box" onclick="showFloatingInfo()">
+        <img src="money.jpg" alt="Imagem Sorteio">
+        <div class="sorteios-info">
+            <h2>SORTEIO ENCERRADO</h2>
+            <p><strong>Valor do Sorteio:</strong> <span class="valor">R$ 800,00</span></p>
+            <p><strong>Sorteio terminou há:</strong>  7 dias</p>
+            <p class="status status-encerrado">Sorteio encerrado</p>
+            <p class="resultado">Este sorteio está encerrado. Clique para mais informações.</p>
+        </div>
+    </div>
+
+
+
+
+    <!-- Sorteio encerrado -->
+    <div class="sorteios-box" onclick="showFloatingInfo()">
+        <img src="money.jpg" alt="Imagem Sorteio">
+        <div class="sorteios-info">
+            <h2>SORTEIO ENCERRADO</h2>
+            <p><strong>Valor do Sorteio:</strong> <span class="valor">R$ 6.000,00</span></p>
+            <p><strong>Sorteio terminou há:</strong> 1 dia</p>
+            <p class="status status-encerrado">Sorteio encerrado</p>
+            <p class="resultado">Este sorteio está encerrado. Clique para mais informações.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Aba flutuante -->
+<div class="floating-above" id="floatingInfo">
+    <p><strong>Informação:</strong> O sorteio foi encerrado os ganhadores já foram informados. Fique atento para proximos sorteios!</p>
+    <button onclick="closeFloatingInfo()">Fechar</button>
+</div>
+
+<script>
+    // Mostrar a aba flutuante
+    function showFloatingInfo() {
+        document.getElementById('floatingInfo').style.display = 'block';
+    }
+
+    // Fechar a aba flutuante
+    function closeFloatingInfo() {
+        document.getElementById('floatingInfo').style.display = 'none';
+    }
+</script>
+
+<style>
+    /* Contêiner geral para os sorteios */
+    .sorteios-container {
+        width: 90%; /* Reduz a largura para não ultrapassar o limite do site */
+        margin: 20px auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Estilo para os retângulos dos sorteios */
+    .sorteios-box {
+        display: flex;
+        align-items: center;
+        background-color: #000; /* Cor de fundo preta */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc; /* Borda cinza ao redor do retângulo */
+        width: 100%; /* A largura vai se ajustar à largura do contêiner */
+    }
+
+    /* Estilo para as imagens dos sorteios */
+    .sorteios-box img {
+        max-width: 80px; /* Imagem maior */
+        margin-right: 20px; /* Espaço maior entre a imagem e o texto */
+    }
+
+    /* Contêiner de informações do sorteio */
+    .sorteios-info {
+        flex-grow: 1;
+    }
+
+    /* Estilo para o título de cada sorteio */
+    .sorteios-info h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff; /* Cor do título em branco */
+    }
+
+    /* Estilo para o texto informativo */
+    .sorteios-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #fff; /* Cor branca para o texto */
+    }
+
+    /* Estilo para o valor do sorteio, com destaque */
+    .sorteios-info .valor {
+        font-size: 16px;
+        font-weight: bold;
+        color: #0cbcc4; /* Cor para o valor do sorteio */
+    }
+
+    /* Estilo para o status dos sorteios */
+    .status {
+        font-weight: bold;
+    }
+
+    .status-aberto {
+        color: #2ecc71; /* Cor verde para "Aberto" */
+    }
+
+    .status-encerrado {
+        color: #e74c3c; /* Cor vermelha para "Encerrado" */
+    }
+
+    /* Estilo para os resultados */
+    .sorteios-info .resultado {
+        font-size: 12px;
+        color: #fff;
+    }
+
+    /* Estilo para os links de acesso aos sorteios */
+    .sorteios-box a {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #0cbcc4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .sorteios-box a:hover {
+        background-color: #0ba7b3;
+    }
+
+    /* Estilo para o botão "Acessar Sorteio" */
+    .acessar-sorteio {
+        display: inline-block;
+        padding: 8px 18px;
+        background-color: #0cbcc4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .acessar-sorteio:hover {
+        background-color: #0ba7b3;
+    }
+
+    /* Estilo para a aba flutuante */
+    .floating-above {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000; /* Fundo preto */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        max-width: 400px;
+        color: #fff; /* Cor do texto */
+    }
+
+    .floating-above p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para o botão de fechar da aba flutuante */
+    .floating-above button {
+        padding: 10px 20px;
+        background-color: #0cbcc4;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .floating-above button:hover {
+        background-color: #0ba7b3;
+    }
+</style>
+
+
+    <div class="floating-menu" id="floatingMenu">
+        <button class="close-btn" id="closeMenu">Fechar</button>
+        <img src="2.png" alt="Logo Flutuante">
+        <div class="contact-section">
+            <div class="contact">
+                <img src="telegram.png" alt="Telegram">
+                <a href="https://t.me/Douglaspix" target="_blank">Telegram</a>
+            </div>
+            <div class="contact">
+                <img src="tiktok.png" alt="TikTok">
+                <a href="https://www.tiktok.com/@douglaspix" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const floatingMenu = document.getElementById('floatingMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        const notification = document.getElementById('notification');
+
+        menuToggle.addEventListener('click', () => {
+            floatingMenu.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            floatingMenu.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', (e) => e.stopPropagation());
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateRandomMessage() {
+            const userId = getRandomInt(100, 999);
+            const numberCount = getRandomInt(1, 100);
+            const message = `Usuário <span class="blue">${userId}</span> adquiriu <span class="green">${numberCount}</span> números`;
+            notification.innerHTML = message;
+        }
+
+        setInterval(generateRandomMessage, 3000); // Altera a mensagem a cada 3 segundos
+
+        // Chama a função de geração de mensagem uma vez para iniciar
+        generateRandomMessage();
+    </script>
+</body>
+</html>
